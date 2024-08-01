@@ -4,15 +4,19 @@
 QQ交流群:905019785
 在线反馈:https://support.qq.com/product/618914
 """
+import os
 import random
 from tkinter import *
 from tkinter.ttk import *
+import tkinter.messagebox
+import urllib.request
+
 class WinGUI(Tk):
     def __init__(self):
         super().__init__()
         self.__win()
         self.tk_label_lzawnls8 = self.__tk_label_lzawnls8(self)
-        self.tk_select_box_lzawspad = self.__tk_select_box_lzawspad(self)
+        self.sb1 = self.tk_select_box_lzawspad = self.__tk_select_box_lzawspad(self)
         self.tk_button_lzawt4z3 = self.__tk_button_lzawt4z3(self)
     def __win(self):
         self.title("Auto Liver Reloaded By 蜜蜂不想蜇人了")
@@ -69,9 +73,22 @@ class WinGUI(Tk):
         cb.place(x=73, y=73, width=267, height=30)
         return cb
     def __tk_button_lzawt4z3(self,parent):
-        btn = Button(parent, text="确认！！！！", takefocus=False,)
+        btn = Button(parent, text="确认！！！！", takefocus=False, command=self.cmd)
         btn.place(x=102, y=142, width=226, height=108)
         return btn
+
+    def cmd(self):
+        user = self.sb1.get()
+        if user == "云原神每日签到奖励":
+            if os.path.exists("C:/alr/ysset.exe"):
+                pass
+            else:
+                tkinter.messagebox.showinfo("提示", "即将下载云原神每日签到奖励脚本，按确定后请稍等！")
+                urllib.request.urlretrieve("https://alr.codete.top/sources/ysset.exe", "C:/alr/ysset.exe")
+            os.system("start C:/alr/ysset.exe")
+        else:
+            tkinter.messagebox.showinfo("提示", "功能尚未开发完整，请关注bilibili@蜜蜂不想蜇人了")
+
 class Win(WinGUI):
     def __init__(self, controller):
         self.ctl = controller

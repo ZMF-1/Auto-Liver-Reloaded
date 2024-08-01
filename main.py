@@ -17,6 +17,18 @@ def restart():
   os.execl(python, python, * sys.argv)
 if __name__ == "__main__":
     # 启动
+    def setNote(path):
+        with open(path + "note.txt", "w+", encoding="utf-8") as note:
+            note.write("本目录由Auto Liver Reload生成，请勿手动修改或删除")
+            note.close()
+    if os.path.exists("C:/alr/"):
+        if os.path.isdir("C:/alr/"):
+            pass
+        else:
+            os.mkdir("C:/alr/")
+    else:
+        os.mkdir("C:/alr/")
+    setNote("C:/alr/")
     app.mainloop()
     a = tkinter.messagebox.askyesno("退出", "确定要退出吗？")
     if a:
