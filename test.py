@@ -1,3 +1,3 @@
-import datetime
+import requests
 
-print(str(datetime.date.today()))
+print(type(requests.get("https://alr.codete.top/info").text))

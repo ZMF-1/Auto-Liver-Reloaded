@@ -54,7 +54,7 @@ if config["mw"]["password"] == "":
         config.write(configfile)
 
 if config["yx"]["uid"] == "":
-    mid = tkinter.simpledialog.askstring("提示", "请输入你的米游社通行证ID\n不知道怎么搞?去 https://alr.codete.top/help/ 看看吧~")
+    mid = tkinter.simpledialog.askstring("提示", "请输入你的米游社通行证ID\n不知道怎么搞?去 https://alr.codete.top/help/01/ 看看吧~")
     if mid == None:
         sys.exit(0)
     config.set("yx", "uid", mid)
@@ -64,13 +64,16 @@ if config["yx"]["uid"] == "":
 if os.path.exists("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp/ysautorun.exe"):
     pass
 else:
+    tkinter.messagebox.showinfo("提示", "按下“确定”以开始下载运行文件")
     urllib.request.urlretrieve("https://alr.codete.top/sources/ysautorun.exe", "ysautorun.exe")
     shutil.move("ysautorun.exe", "C:/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp/ysautorun.exe")
 if os.path.exists("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp/pubkey.pem"):
     pass
 else:
+    tkinter.messagebox.showinfo("提示", "按下“确定”以开始下载证书文件")
     urllib.request.urlretrieve("https://alr.codete.top/sources/pubkey.pem", "pubkey.pem")
     shutil.move("pubkey.pem", "C:/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp/pubkey.pem")
-tkinter.messagebox.showinfo("提示", "电脑启动项已添加完成!")
+tkinter.messagebox.showinfo("提示", "按下“确定”以开始添加开机启动项")
 os.chdir("C:/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp")
 os.system("\"C:/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp/ysautorun.exe\"")
+tkinter.messagebox.showinfo("提示", "电脑启动项已添加完成!")

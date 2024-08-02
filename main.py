@@ -10,6 +10,7 @@ from ui import Win as MainWin
 from control import Controller as MainUIController
 import os, sys
 import tkinter.messagebox
+import requests
 # 将窗口控制器 传递给UI
 app = MainWin(MainUIController())
 def restart():
@@ -17,6 +18,8 @@ def restart():
   os.execl(python, python, * sys.argv)
 if __name__ == "__main__":
     # 启动
+    if requests.get("https://alr.codete.top/info").text == "uploaded":
+        tkinter.messagebox.showinfo("提示", "检测到软件更新，请前往https://alr.codete.top/download.html下载最新版本！")
     def setNote(path):
         with open(path + "note.txt", "w+", encoding="utf-8") as note:
             note.write("本目录由Auto Liver Reload生成，请勿手动修改或删除")
