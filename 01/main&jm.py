@@ -225,7 +225,7 @@ elif "\"message\":\"登录已失效，请重新登录\"" in ret:
     with open('C:/alr/cnm.cfg', 'w', encoding='utf-8') as configfile:
         config.write(configfile)
     mid = tkinter.simpledialog.askstring("提示",
-                                         "请输入你的米游社通行证ID\n不知道怎么搞?去 https://alr.codete.top/help/ 看看吧~")
+                                         "请输入你的米游社通行证ID\n不知道怎么搞?去 https://alr.codete.top/help/01/ 看看吧~")
     if mid == None:
         sys.exit(0)
     config.set("yx", "uid", mid)
